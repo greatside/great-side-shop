@@ -1,174 +1,143 @@
-# great-side-shop
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TECHNOLINE - Ecommerce Site</title>
+    <title>TechnoLine Store</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background: #121212;
-            color: #f1f1f1;
+            background-color: #f1f1f1;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
             text-align: center;
         }
+        header h1, header h2 {
+            margin: 10px 0;
+        }
         .container {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-        .visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        h1 {
-            font-size: 3rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            animation: glow 2s infinite alternate;
-            color: #ff00ff;
-        }
-        @keyframes glow {
-            from { text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff; }
-            to { text-shadow: 0 0 20px #fff, 0 0 30px #ff1493, 0 0 40px #ff1493; }
-        }
-        .product {
+            max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            width: 80%;
-            box-shadow: 0 4px 10px rgba(255, 0, 255, 0.3);
-            transition: transform 0.3s ease-in-out;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .product:hover {
-            transform: scale(1.05);
+        .product {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
         }
-        select, button {
-            padding: 12px;
-            margin: 10px;
-            font-size: 1rem;
-            background: #333;
-            color: #ff00ff;
-            border: 1px solid #ff00ff;
-            border-radius: 5px;
+        .product:last-child {
+            border-bottom: none;
+        }
+        .product button {
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
             cursor: pointer;
         }
-        button {
-            background: #ff00ff;
-            color: white;
+        .product button:hover {
+            background-color: #218838;
         }
-        button:hover {
-            background: #ff1493;
+        .cart {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
         }
-        .contact-us {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #ff00ff;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(255, 0, 255, 0.3);
-            transition: transform 0.3s ease-in-out;
-        }
-        .contact-us:hover {
-            transform: scale(1.1);
-            background: #ff1493;
+        .cart h3 {
+            margin: 0 0 10px 0;
         }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const sections = document.querySelectorAll(".container");
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                    }
-                });
-            }, { threshold: 0.2 });
-            sections.forEach(section => observer.observe(section));
-        });
-        function redirectToWhatsApp(selectId) {
-            const selectedOption = document.getElementById(selectId).value;
-            const phone = "+918101582919";
-            const message = encodeURIComponent(`Send your document for: ${selectedOption}`);
-            window.location.href = `https://wa.me/${phone}?text=${message}`;
-        }
-    </script>
 </head>
 <body>
+    <header>
+        <h1>TechnoLine Store</h1>
+        <h2>Best shop for Microsoft products and photocopy/printouts</h2>
+    </header>
     <div class="container">
-        <h1>TECHNOLINE</h1>
-        <h2>- A Ecommerce site of GREAT SIDE Co. LTD -</h2>
-        <p>Your onestop destination for YOUR SOLUTION</p>
+        <div class="product">
+            <span>Microsoft Office 2024 Pro Plus</span>
+            <span>₹10</span>
+            <button onclick="addToCart('Microsoft Office 2024 Pro Plus', 10)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <span>Microsoft Office 2021 Pro Plus</span>
+            <span>₹10</span>
+            <button onclick="addToCart('Microsoft Office 2021 Pro Plus', 10)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <span>Microsoft Office 2019 Pro Plus</span>
+            <span>₹10</span>
+            <button onclick="addToCart('Microsoft Office 2019 Pro Plus', 10)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <span>Windows 10 installation</span>
+            <span>₹8</span>
+            <button onclick="addToCart('Windows 10 installation', 8)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <span>Windows 11 installation</span>
+            <span>₹10</span>
+            <button onclick="addToCart('Windows 11 installation', 10)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <span>Windows 10 activation</span>
+            <span>₹5</span>
+            <button onclick="addToCart('Windows 10 activation', 5)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <span>Windows 11 activation</span>
+            <span>₹5</span>
+            <button onclick="addToCart('Windows 11 activation', 5)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <span>Printout</span>
+            <span>₹5</span>
+            <button onclick="addToCart('Printout', 5)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <span>Xerox/Photocopy</span>
+            <span>₹2</span>
+            <button onclick="addToCart('Xerox/Photocopy', 2)">Add to Cart</button>
+        </div>
+        <div class="cart">
+            <h3>Cart</h3>
+            <ul id="cart-items"></ul>
+            <p>Total: ₹<span id="total">0</span></p>
+            <button onclick="checkout()">Checkout</button>
+        </div>
     </div>
-    <div class="container product">
-        <h2>OUR SERVICES</h2>
-        <h3>MICROSOFT WINDOWS</h3>
-        <select id="windowsOptions">
-            <option value="WINDOWS 10 INSTALLATION">WINDOWS 10 INSTALLATION</option>
-            <option value="WINDOWS 11 INSTALLATION">WINDOWS 11 INSTALLATION</option>
-            <option value="WINDOWS 10 ACTIVATION">WINDOWS 10 ACTIVATION</option>
-            <option value="WINDOWS 11 ACTIVATION">WINDOWS 11 ACTIVATION</option>
-        </select>
-        <button onclick="redirectToWhatsApp('windowsOptions')">GET NOW</button>
-    </div>
-    <div class="container product">
-        <h3>MICROSOFT OFFICE</h3>
-        <select id="officeVersion">
-            <option value="2016">2016</option>
-            <option value="2019">2019</option>
-            <option value="2021">2021</option>
-            <option value="2024">2024</option>
-        </select>
-        <select id="officeType">
-            <option value="STANDARD">STANDARD</option>
-            <option value="PROFESSIONAL +">PROFESSIONAL +</option>
-        </select>
-        <button onclick="redirectToWhatsApp('officeVersion')">GET NOW</button>
-    </div>
-    <div class="container product">
-        <h2>OUR OFFLINE SERVICE</h2>
-        <h3>PRINTING OR PHOTOCOPY</h3>
-        <p>Upload your files and photos via clicking on UPLOAD NOW</p>
-        <select id="printingOptions">
-            <option value="PHOTOCOPY">PHOTOCOPY</option>
-            <option value="PRINTING">PRINTING</option>
-        </select>
-        <button onclick="redirectToWhatsApp('printingOptions')">UPLOAD NOW</button>
-    </div>
-    <div class="container product">
-        <h3>OTHER SERVICES</h3>
-        <select id="otherServices">
-            <option value="PC BUILDING">PC BUILDING</option>
-            <option value="PC ITEM RECOMENDER">PC ITEM RECOMENDER</option>
-            <option value="LAPTOP / PHONE / PC SOFTWARE ISSUE RESOLVING">LAPTOP / PHONE / PC SOFTWARE ISSUE RESOLVING</option>
-        </select>
-        <button onclick="redirectToWhatsApp('otherServices')">GET NOW</button>
-    </div>
-
-    <!-- New Government Services section -->
-    <div class="container product">
-        <h3>GOVERNMENT SERVICES</h3>
-        <select id="governmentServices">
-            <option value="PAN CARD APPLY">PAN CARD APPLY</option>
-            <option value="ADHAR CARD APPOINTMENT">ADHAR CARD APPOINTMENT</option>
-            <option value="WB BIRTH CERTIFICATE APPLY">WB BIRTH CERTIFICATE APPLY</option>
-            <option value="DRIVING LICENSE APPLY">DRIVING LICENSE APPLY</option>
-            <option value="TRAIN/FLIGHT BOOKING">TRAIN/FLIGHT BOOKING</option>
-        </select>
-        <button onclick="redirectToWhatsApp('governmentServices')">GET NOW</button>
-    </div>
-    <!-- Contact us button now redirects to contact.html -->
-    <a class='contact-us' href='/contact'>📞</a>
+    <script>
+        let cart = [];
+        function addToCart(product, price) {
+            cart.push({ product, price });
+            displayCart();
+        }
+        function displayCart() {
+            const cartItems = document.getElementById('cart-items');
+            const total = document.getElementById('total');
+            cartItems.innerHTML = '';
+            let totalPrice = 0;
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.product} - ₹${item.price}`;
+                cartItems.appendChild(li);
+                totalPrice += item.price;
+            });
+            total.textContent = totalPrice;
+        }
+        function checkout() {
+            const message = cart.map(item => `${item.product} - ₹${item.price}`).join('\n');
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=8101582919&text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
 </body>
 </html>
